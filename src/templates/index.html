@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TIMBRE - Voice Cloning</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image.png') }}" type="image/x-icon"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="card">
+            <button id="theme_toggle" class="theme-toggle" title="Toggle theme">
+                <svg id="sun_icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <svg id="moon_icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+            </button>
+            <div class="header">
+                <h1 class="title">TIMBRE</h1>
+                <p class="subtitle">High-Fidelity Voice Cloning Interface</p>
+            </div>
+            <div class="content-grid">
+                <div class="input-column">
+                    <div class="step-section">
+                        <h2 class="section-title">1. Provide Reference Audio</h2>
+                        <div id="upload_area">
+                            <label for="audio_upload">Upload File (MP3, WAV, etc.)</label>
+                            <input type="file" id="audio_upload" accept="audio/*">
+                        </div>
+                        <div class="divider"><span>OR</span></div>
+                        <div id="recorder_ui"></div>
+                    </div>
+                    <div class="step-section">
+                        <h2 class="section-title">2. Enter Text</h2>
+                        <label for="language_select">Language of Text</label>
+                        <select id="language_select"></select>
+                        <label for="text_input">Text to Synthesize</label>
+                        <textarea id="text_input" rows="4" placeholder="Type or paste your text here..."></textarea>
+                    </div>
+                </div>
+                <div class="output-column">
+                    <h2 class="section-title">3. Generate & Listen</h2>
+                    <button id="generate_btn">Generate Voice</button>
+                    <div id="status_area" class="status-area">
+                        <p>Your cloned voice will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+Docker
+.dockerignore
+docker-compose.override.yml
+
+Python
+pycache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.eggs/
+*.egg-info/
+
+IDE files
+.idea/
+.vscode/
+
+data/
+output/

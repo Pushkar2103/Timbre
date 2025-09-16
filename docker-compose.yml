@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    tty: true
+    # Map port 8080 from the container to your local machine
+    ports:
+      - "8080:8080"
+    # Automatically agrees to the license terms to prevent interactive prompt
+    environment:
+      - COQUI_TOS_AGREED=1
+    volumes:
+      - ./src:/app/src
+      # Caches the downloaded TTS models on your host machine
+      - tts_models:/root/.local/share/tts
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+# Defines the named volume used for the cache
+volumes:
+  tts_models:
+
