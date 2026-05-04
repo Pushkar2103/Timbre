@@ -2,7 +2,7 @@
 FROM python:3.11-slim-bookworm
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /app/src
 
 # (Networking Fix) Force the use of HTTPS for all software repositories.
 RUN sed -i 's/http:/https:/g' /etc/apt/sources.list.d/debian.sources
@@ -28,5 +28,5 @@ COPY ./src /app/src
 EXPOSE 8080
 
 # The command to run when the container starts
-CMD ["python", "src/app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:10000", "app:app"]
 

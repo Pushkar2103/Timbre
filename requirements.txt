@@ -6,3 +6,4 @@ tqdm
 transformers==4.38.2
 Flask
 Flask-Cors
+gunicorn
