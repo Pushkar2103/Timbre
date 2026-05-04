@@ -127,5 +127,6 @@ def clone_voice():
 # --- 5. Run the Application ---
 if __name__ == '__main__':
     # Running on 0.0.0.0 makes it accessible within the Docker container
-    app.run(host='0.0.0.0', port=8080)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
